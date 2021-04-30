@@ -30,6 +30,18 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", targetEntity = Endereco.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
 
+    public Usuario() {
+    }
+
+    public Usuario(Long id, String name, String email, Long cpf, Date birth, List<Endereco> enderecos) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.birth = birth;
+        this.enderecos = enderecos;
+    }
+
     public Long getId() {
         return id;
     }
