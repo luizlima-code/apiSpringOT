@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class OrangetalentsApiApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(OrangetalentsApiApplication.class, args);
 	}
 

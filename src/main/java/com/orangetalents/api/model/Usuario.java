@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,16 +27,8 @@ public class Usuario {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date birth;
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", cpf=" + cpf +
-                ", birth=" + birth +
-                '}';
-    }
+    @OneToMany(mappedBy = "usuario", targetEntity = Endereco.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Endereco> enderecos;
 
     public Long getId() {
         return id;
@@ -75,6 +68,14 @@ public class Usuario {
 
     public void setBirth(Date birth) {
         this.birth = birth;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
     @Override
